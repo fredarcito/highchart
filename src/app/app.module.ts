@@ -10,12 +10,14 @@ import { HighchartService } from './services/highchart.service';
 
 //HighChart
 import { ChartModule } from 'angular-highcharts';
+import { CreateChartComponent } from './components/create-chart/create-chart.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ChartComponent
+    ChartComponent,
+    CreateChartComponent
   ],
   imports: [
     BrowserModule,
