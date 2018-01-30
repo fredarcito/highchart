@@ -1,3 +1,14 @@
 <p>
   chart works!
 </p>
+
+
+<select>
+	<option>
+		{{data.options.title.text}}
+	</option>
+</select>
+
+ <button (click)="addPoint()">Add Point!</button>
+ <div [chart]="chart"></div>
+

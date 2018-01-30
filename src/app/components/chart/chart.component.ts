@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HighchartService } from '../../services/highchart.service'
 
 @Component({
   selector: 'app-chart',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChartComponent implements OnInit {
 
-  constructor() { }
+	chart = this.chartService.chart;
+	data;
 
-  ngOnInit() {
+
+  constructor( private chartService : HighchartService ) { 
+  		this.data = this.chartService.data();
+  		console.log(this.data);
+   }
+
+  ngOnInit() { }
+
+  addPoint() {
+    this.chart.addPoint({name: 'Marcos', y: 27.2});
   }
+ 
 
 }
