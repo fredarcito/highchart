@@ -1,1 +1,43 @@
 /* You can add global styles to this file, and also import other style files */
+
+*{
+	margin: 0px;
+	padding: 0px;
+	border: 0px;
+}
+body{
+	overflow-x: hidden;
+	font-size: 14px;
+}
+header{
+	width: 100%;
+	color: #747e8e;
+	background: #fff;
+	box-shadow: 4px 0 5px rgba(0,0,0,0.4);
+	position: fixed;
+	text-align: center;
+	top: 0px;
+	left: 130px;
+	padding: 18px 0px;
+	z-index: 1000;
+	font-family: Arial;
+}
+
+aside{
+	width: 260px;
+	position: fixed;
+	background: #3f4a59;
+	height: 100%;
+	left: 0px;
+	z-index: 1000;
+	top: 0px;
+
+}
+
+.content{
+	position: relative;
+	top: 55px;
+	left: 125px;
+	width: 80%;
+	margin: 0 auto;
+}

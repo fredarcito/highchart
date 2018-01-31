@@ -5,10 +5,20 @@
 
 <select>
 	<option>
-		{{data.options.title.text}}
+		{{pie.options.series[0].name}}
 	</option>
 </select>
 
+
+
+
  <button (click)="addPoint()">Add Point!</button>
- <div [chart]="chart"></div>
+
+<div [chart]="pie"></div>
+<div [chart]="luicito"></div>
+
+
+
+
+
 

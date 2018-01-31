@@ -11,13 +11,17 @@ import { HighchartService } from './services/highchart.service';
 //HighChart
 import { ChartModule } from 'angular-highcharts';
 import { CreateChartComponent } from './components/create-chart/create-chart.component';
+import { HeaderComponent } from './components/shared/header/header.component';
+import { SidebarComponent } from './components/shared/sidebar/sidebar.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ChartComponent,
-    CreateChartComponent
+    CreateChartComponent,
+    HeaderComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,

@@ -8,24 +8,51 @@ import { HighchartService } from '../../services/highchart.service'
 })
 export class ChartComponent implements OnInit {
 
-	chart = this.chartService.chart;
-	data;
+	//pie = this.chartService.pie;
+  public pie;
+	public line;
+  public data = this.chartService.data();
 
   constructor( private chartService : HighchartService ) { 
-  		this.data = this.chartService.data();
-
-  		console.log(this.data);
+      this.pieChart(this.data);
+      //this.lineChart(this.data);
+  		
    }
 
   ngOnInit() {
-  		/*setInterval(()=>{
-  			this.chart.addPoint({name: 'Marcos', y: Math.floor(Math.random() * 100)});
-  		}, 3000);*/
+  		setInterval(()=>{
+  			this.pie.addPoint({name: 'Marcos', y: Math.floor(Math.random() * 100)});
+  		}, 3000);
    }
 
   addPoint() {
-    this.chart.addPoint({name: 'Marcos', y:  Math.floor(Math.random() * 100)});
+    this.pie.addPoint({name: 'Marcos', y:  Math.floor(Math.random() * 100)});
   }
  
+   pieChart( data ){
+    console.log("line");
+    console.log(data);
+
+    let provi = data;
+
+    console.log("provi");
+    console.log(provi);
+    provi.options.chart.type = "pie";
+    this.pie = data;
+    
+  }
+
+   lineChart( data ){
+    console.log("line");
+    console.log(data);
+
+    let provi = data;
+
+    console.log("provi");
+    console.log(provi);
+    provi.options.chart.type = "line";
+    this.line = data;
+    
+  }
 
 }
