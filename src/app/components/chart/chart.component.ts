@@ -12,9 +12,11 @@ export class ChartComponent implements OnInit {
 
 	//pie = this.chartService.pie;
   public chart;
+  public line;
 
   constructor( private chartService : HighchartService ) { 
     this.pieChart();
+    this.lineChart();
 
   }
 
@@ -64,11 +66,11 @@ export class ChartComponent implements OnInit {
       let obj;
 
       for(let i=0; i<a; i++){
-        let name = value[i].name;
-        let cant = value[i].cant;
-        obj = {name:name, y:cant};
+        let timeByToy = value[i].timeByToy;
+        let time = value[i].time;
+        obj = {name:timeByToy, y:time};
         data.push(obj);
-        this.chart.addPoint(obj);
+        this.line.addPoint(obj);
       }
       
       data = [];
@@ -79,16 +81,17 @@ export class ChartComponent implements OnInit {
   }
 
 
-  lineChart(){
+  lineChart( ){
+
     let line= new Chart({
       chart: {
         plotBackgroundColor: null,
         plotBorderWidth: null,
         plotShadow: false,
-        type: 'pie'
+        type: 'line'
       },
       title: {
-        text: 'Browser market shares January, 2015 to May, 2015'
+        text: 'Produccion De Juguetes'
       },
       tooltip: {
         pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -109,56 +112,26 @@ export class ChartComponent implements OnInit {
       }]
     });
 
-
     let data=[];
 
     this.chartService.data().subscribe((value)=>{
-
-
       let a= value.length;
-      console.log(line);
       let obj;
 
       for(let i=0; i<a; i++){
-        let time = value[i].time;
-        let timeToy = value[i].timeByToy;
-        obj = {name:timeToy, y:time};
+        let name = value[i].name;
+        let cant = value[i].cant;
+        obj = {name:name, y:cant};
         data.push(obj);
+        this.chart.addPoint(obj);
       }
-
-      this.chart.addPoint(data);
-        //pie.options.series[0].data = data;
-        console.log(data);
-        data = [];
-
-      });
+      
+      data = [];
+    });
 
 
-    let array = [{
-      name: 'IE',
-      y: 56.33
-    }, {
-      name: 'Chrome',
-      y: 24.03,
-      sliced: true,
-      selected: true
-    }, {
-      name: 'Firefox',
-      y: 10.38
-    }, {
-      name: 'Safari',
-      y: 4.77
-    }, {
-      name: 'Opera',
-      y: 0.91
-    }, {
-      name: 'Other',
-      y: 0.2
-    }] 
-
-    line.options.series[0].data = array;
-
-
+    this.line = line;
+  }
   }
 
 }
