@@ -38,7 +38,7 @@ export class ChartComponent implements OnInit {
         type: 'pie'
       },
       title: {
-        text: 'Produccion De Juguetes'
+        text: 'Produccion De Juguetes Pie'
       },
       tooltip: {
         pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -54,7 +54,7 @@ export class ChartComponent implements OnInit {
         }
       },
       series: [{
-        name: 'Brands',
+        name: 'Empleado',
         data: []
       }]
     });
@@ -72,11 +72,9 @@ export class ChartComponent implements OnInit {
         data.push(obj);
         this.line.addPoint(obj);
       }
-      
+
       data = [];
     });
-
-
     this.chart = pie;
   }
 
@@ -91,7 +89,7 @@ export class ChartComponent implements OnInit {
         type: 'line'
       },
       title: {
-        text: 'Produccion De Juguetes'
+        text: 'Produccion De Juguetes Line'
       },
       tooltip: {
         pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -107,17 +105,14 @@ export class ChartComponent implements OnInit {
         }
       },
       series: [{
-        name: 'Brands',
+        name: 'Tiempo',
         data: []
       }]
     });
 
-    let data=[];
-
     this.chartService.data().subscribe((value)=>{
       let a= value.length;
       let obj;
-
       for(let i=0; i<a; i++){
         let timeByToy = value[i].timeByToy;
         let time = value[i].time;
@@ -131,5 +126,3 @@ export class ChartComponent implements OnInit {
     this.line = line;
   }
   }
-
-}
