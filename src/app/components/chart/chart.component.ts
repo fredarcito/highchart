@@ -66,9 +66,9 @@ export class ChartComponent implements OnInit {
       let obj;
 
       for(let i=0; i<a; i++){
-        let timeByToy = value[i].timeByToy;
-        let time = value[i].time;
-        obj = {name:timeByToy, y:time};
+       let name = value[i].name;
+        let cant = value[i].cant;
+        obj = {name:name, y:cant};
         data.push(obj);
         this.line.addPoint(obj);
       }
@@ -119,14 +119,12 @@ export class ChartComponent implements OnInit {
       let obj;
 
       for(let i=0; i<a; i++){
-        let name = value[i].name;
-        let cant = value[i].cant;
-        obj = {name:name, y:cant};
-        data.push(obj);
+        let timeByToy = value[i].timeByToy;
+        let time = value[i].time;
+        obj = {name:timeByToy, y:time};
         this.chart.addPoint(obj);
       }
       
-      data = [];
     });
 
 
