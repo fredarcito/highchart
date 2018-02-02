@@ -32,7 +32,7 @@ export class HighchartService {
 				});
 
 				observer.next(newData);
-			}, 10000);
+			}, 5000);
 		});
 	}
 

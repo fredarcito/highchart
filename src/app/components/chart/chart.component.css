@@ -1,0 +1,6 @@
+.line{
+	display: inline-block;
+	vertical-align: top;
+	width: 49.8%;
+	box-shadow: 4px 0 5px rgba(0,0,0,0.4);
+}

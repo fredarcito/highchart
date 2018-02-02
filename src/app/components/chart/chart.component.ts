@@ -13,7 +13,7 @@ export class ChartComponent implements OnInit {
 	//pie = this.chartService.pie;
   public chart;
   public line;
-  public series=[];
+  public category = [];
 
   constructor( private chartService : HighchartService ) { 
     this.pieChart();
@@ -79,22 +79,25 @@ export class ChartComponent implements OnInit {
 
   lineChart( ){
 
+
+
     this.chartService.data().subscribe((value)=>{
+      setTimeout(()=>{
       let a= value.length;
-      let obj;
+      let time = value[0].time;
+      //let obj;
       for(let i=0; i<a; i++){
 
         let name = value[i].name;
-        let timeByToy = value[i].timeByToy;
-        let time = value[i].time;
+        let timeByToy = value[i].timeByToy; 
         //obj = {name: name, data:timeByToy};
         //this.series[i] = {name:name, data: [timeByToy]};
         //console.log(this.series);
         this.line.addPoint(timeByToy,[i]);
-
-
+        console.log(time);
       }
-      console.log(line);
+      this.category.push(time);
+       },1000);
     });
 
     let line= new Chart({
@@ -110,6 +113,9 @@ export class ChartComponent implements OnInit {
 
     subtitle: {
         text: 'Source: thesolarfoundation.com'
+    },
+    xAxis: {
+        categories: this.category
     },
 
     yAxis: {
