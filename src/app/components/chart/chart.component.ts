@@ -13,6 +13,7 @@ export class ChartComponent implements OnInit {
 	//pie = this.chartService.pie;
   public chart;
   public line;
+  public series=[];
 
   constructor( private chartService : HighchartService ) { 
     this.pieChart();
@@ -29,6 +30,19 @@ export class ChartComponent implements OnInit {
   }
 
   pieChart( ){
+
+    this.chartService.data().subscribe((value)=>{
+      let a= value.length;
+      let obj;
+
+      for(let i=0; i<a; i++){
+        this.chart.removePoint(i);
+       let name = value[i].name;
+        let cant = value[i].cant;
+        obj = {name:name, y:cant};
+        this.chart.addPoint(obj);
+      }
+    });
 
     let pie= new Chart({
       chart: {
@@ -59,70 +73,91 @@ export class ChartComponent implements OnInit {
       }]
     });
 
-    let data=[];
-
-    this.chartService.data().subscribe((value)=>{
-      let a= value.length;
-      let obj;
-
-      for(let i=0; i<a; i++){
-       let name = value[i].name;
-        let cant = value[i].cant;
-        obj = {name:name, y:cant};
-        data.push(obj);
-        this.line.addPoint(obj);
-      }
-
-      data = [];
-    });
     this.chart = pie;
   }
 
 
   lineChart( ){
 
+    this.chartService.data().subscribe((value)=>{
+      let a= value.length;
+      let obj;
+      for(let i=0; i<a; i++){
+
+        let name = value[i].name;
+        let timeByToy = value[i].timeByToy;
+        let time = value[i].time;
+        //obj = {name: name, data:timeByToy};
+        //this.series[i] = {name:name, data: [timeByToy]};
+        //console.log(this.series);
+        this.line.addPoint(timeByToy,[i]);
+
+
+      }
+      console.log(line);
+    });
+
     let line= new Chart({
-      chart: {
+       chart: {
         plotBackgroundColor: null,
         plotBorderWidth: null,
         plotShadow: false,
         type: 'line'
       },
       title: {
-        text: 'Produccion De Juguetes Line'
-      },
-      tooltip: {
-        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-      },
-      plotOptions: {
-        pie: {
-          allowPointSelect: true,
-          cursor: 'pointer',
-          dataLabels: {
-            enabled: true,
-            format: '<b>{point.name}</b>: {point.percentage:.1f} %'
-          }
-        }
-      },
-      series: [{
-        name: 'Tiempo',
-        data: []
-      }]
-    });
+        text: 'Solar Employment Growth by Sector, 2010-2016'
+    },
 
-    this.chartService.data().subscribe((value)=>{
-      let a= value.length;
-      let obj;
-      for(let i=0; i<a; i++){
-        let timeByToy = value[i].timeByToy;
-        let time = value[i].time;
-        obj = {name:timeByToy, y:time};
-        this.chart.addPoint(obj);
+    subtitle: {
+        text: 'Source: thesolarfoundation.com'
+    },
+
+    yAxis: {
+        title: {
+            text: 'Tiempo'
+        }
+    },
+    legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'middle'
+    },
+
+    plotOptions: {
+        series: {
+            pointStart: 0
+        }
+    },
+      series:[{
+        name: "Luis",
+        data: []
+      },
+      {
+        name: "Pedro",
+        data: []
+      },
+      {
+        name: "Julian",
+        data: []
+      },
+      {
+        name: "Sofia",
+        data: []
       }
-      
+      ]
     });
 
 
     this.line = line;
   }
+
+
+  borrar(){
+      this.chart.removePoint(0);
+      console.log("borrado");
   }
+
+  }
+
+
+
