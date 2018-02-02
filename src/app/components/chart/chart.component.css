@@ -7,3 +7,10 @@
 .container{
 	margin-top: 20px;
 }
+
+@media (max-width: 600px) {
+	.line{
+		width: 100%;
+		margin-bottom: 10px;
+	}
+}

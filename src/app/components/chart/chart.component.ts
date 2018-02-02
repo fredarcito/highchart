@@ -99,7 +99,6 @@ export class ChartComponent implements OnInit {
         //this.series[i] = {name:name, data: [timeByToy]};
         //console.log(this.series);
         this.line.addPoint(timeByToy,[i]);
-        console.log(time);
       }},1000);
     });
 
