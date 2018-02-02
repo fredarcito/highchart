@@ -129,19 +129,19 @@ export class ChartComponent implements OnInit {
         }
     },
       series:[{
-        name: "Luis",
+        name: "Marcos",
         data: []
       },
       {
-        name: "Pedro",
+        name: "Fabian",
         data: []
       },
       {
-        name: "Julian",
+        name: "Andres",
         data: []
       },
       {
-        name: "Sofia",
+        name: "Melisa",
         data: []
       }
       ]
