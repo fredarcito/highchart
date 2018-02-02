@@ -85,6 +85,11 @@ export class ChartComponent implements OnInit {
       setTimeout(()=>{
       let a= value.length;
       let time = value[0].time;
+      let hour = new Date(time).getHours();
+      let minutes = new Date(time).getMinutes()
+      let second = new Date(time).getSeconds();
+      this.category.push(hour+":"+minutes+":"+second);
+
       //let obj;
       for(let i=0; i<a; i++){
 
@@ -95,9 +100,7 @@ export class ChartComponent implements OnInit {
         //console.log(this.series);
         this.line.addPoint(timeByToy,[i]);
         console.log(time);
-      }
-      this.category.push(time);
-       },1000);
+      }},1000);
     });
 
     let line= new Chart({
@@ -108,11 +111,11 @@ export class ChartComponent implements OnInit {
         type: 'line'
       },
       title: {
-        text: 'Solar Employment Growth by Sector, 2010-2016'
+        text: 'Tiempo Produccion'
     },
 
     subtitle: {
-        text: 'Source: thesolarfoundation.com'
+        text: 'Source: github.com/fredarcito'
     },
     xAxis: {
         categories: this.category
