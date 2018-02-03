@@ -10,21 +10,21 @@ body{
 	font-size: 14px;
 }
 header{
-	width: 100%;
+	width: 80%;
 	color: #747e8e;
 	background: #fff;
 	box-shadow: 4px 0 5px rgba(0,0,0,0.4);
 	position: fixed;
 	text-align: center;
 	top: 0px;
-	left: 130px;
-	padding: 18px 0px;
+	left: 20%;
+	padding: 15px 0px;
 	z-index: 1000;
 	font-family: Arial;
 }
 
 aside{
-	width: 260px;
+	width: 20%;
 	position: fixed;
 	background: #3f4a59;
 	height: 100%;
@@ -94,11 +94,19 @@ aside{
 /*Media queries*/
 
 @media (max-width: 600px) {
+	
+	header{
+		width: 100%;
+	}		
+
   aside {
-    left: -260px;
+    width: 100%;
   }
   header{
   	left: 0px;
+  }
+  #menu{
+  	display: block;
   }
   .content{
   	width: 100%;
