@@ -1,5 +1,5 @@
-<app-header></app-header>
-<app-sidebar></app-sidebar>
+<app-header (dato)="emitirDato($event)" ></app-header>
+<app-sidebar [datoDesdeAfuera]="datoRecibido" ></app-sidebar>
 <!--The content below is only a placeholder and can be replaced.-->
 
 <div class="content">

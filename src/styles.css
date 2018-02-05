@@ -101,6 +101,7 @@ aside{
 
   aside {
     width: 100%;
+    display: none;
   }
   header{
   	left: 0px;
